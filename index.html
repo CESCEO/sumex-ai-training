@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>수멕스 AI 업무자동화 TRAINING | 최은성</title>
+<meta name="description" content="왜 AI 전환(AX)이 필요한가, AI의 진화, 에이전틱 AI, 그리고 수멕스의 AI 업무자동화 로드맵">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#06101e; --bg2:#0b1a2f; --card:rgba(255,255,255,.045); --line:rgba(148,197,255,.16);
+  --tx:#e6edf6; --mut:#93a4ba; --teal:#2ee6d6; --blue:#4f8cff; --amber:#ffb547; --rose:#ff6b8b; --green:#5be38f;
+}
+html,body{background:var(--bg)}
+.reveal-viewport{background:radial-gradient(1200px 700px at 85% -10%,#12325a 0%,transparent 60%),radial-gradient(900px 600px at -10% 110%,#0b3b44 0%,transparent 55%),var(--bg)}
+.reveal{font-family:'Pretendard Variable',Pretendard,-apple-system,'Malgun Gothic',sans-serif;color:var(--tx);font-size:26px;letter-spacing:-.01em}
+.reveal .slides{text-align:left}
+.reveal .slides section{padding:56px 72px 64px;box-sizing:border-box;height:100%}
+.reveal h1,.reveal h2,.reveal h3{font-family:inherit;color:#fff;margin:0;line-height:1.18;letter-spacing:-.03em;text-transform:none}
+.reveal h1{font-size:76px;font-weight:800}
+.reveal h2{font-size:50px;font-weight:800;margin-bottom:14px}
+.reveal h3{font-size:30px;font-weight:700;margin-bottom:8px}
+.reveal p{margin:0 0 12px;line-height:1.5}
+.reveal a{color:var(--teal);text-decoration:none}
+.reveal a:hover{text-decoration:underline}
+.reveal ul{margin:0;padding-left:1.1em}
+.reveal li{margin:6px 0;line-height:1.45}
+.kicker{display:inline-block;font-size:18px;font-weight:700;letter-spacing:.14em;color:var(--teal);text-transform:uppercase;margin-bottom:12px}
+.lead{font-size:28px;color:#c9d6e6;max-width:1300px}
+.mut{color:var(--mut)}
+.hl{color:var(--teal)} .am{color:var(--amber)} .rs{color:var(--rose)} .gr{color:var(--green)} .bl{color:var(--blue)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.g-55-45{display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 24px;backdrop-filter:blur(6px)}
+.card h3{font-size:30px}
+.card p,.card li{font-size:24px;color:#cfdae8;line-height:1.5}
+.kpi{font-size:64px;font-weight:800;line-height:1;letter-spacing:-.04em;color:#fff}
+.kpi small{font-size:26px;font-weight:700;color:var(--mut);margin-left:4px}
+.kpi-l{font-size:22px;color:var(--mut);margin-top:8px;line-height:1.4}
+.chart-box{position:relative;height:520px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.chart-box.sm{height:420px}
+.chart-box canvas{width:100%!important;height:100%!important}
+.src{position:absolute;left:72px;right:72px;bottom:22px;font-size:15px;color:#6f819a;line-height:1.45}
+.src a{color:#7fb7c9}
+.brand{position:fixed;right:28px;bottom:16px;font-size:13px;color:#5d6e86;letter-spacing:.08em;z-index:30}
+.quote{font-size:44px;font-weight:800;line-height:1.3;color:#fff;letter-spacing:-.03em}
+.quote .q{color:var(--teal)}
+.pill{display:inline-block;padding:5px 14px;border-radius:999px;font-size:17px;font-weight:700;border:1px solid var(--line);background:rgba(46,230,214,.08);color:var(--teal);margin:0 6px 6px 0}
+.pill.am{background:rgba(255,181,71,.1);color:var(--amber)}
+.pill.rs{background:rgba(255,107,139,.1);color:var(--rose)}
+.img-r{width:100%;border-radius:18px;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.45);display:block}
+.note{border-left:4px solid var(--amber);padding:14px 20px;background:rgba(255,181,71,.07);border-radius:0 12px 12px 0;font-size:24px;line-height:1.5;color:#f3dfbf}
+.note.teal{border-color:var(--teal);background:rgba(46,230,214,.07);color:#cdf6f2}
+/* cover & dividers */
+.cover-wrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 90px}
+.cover-wrap h1{font-size:92px}
+.cover-sub{font-size:30px;color:#cfe3f5;margin-top:18px}
+.cover-meta{margin-top:46px;font-size:24px;color:#9fb3cb}
+.cover-meta b{color:#fff;font-size:30px}
+.divider{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 110px}
+.divider .num{font-size:170px;font-weight:900;line-height:1;color:transparent;-webkit-text-stroke:2px var(--teal);opacity:.9}
+.divider h1{font-size:84px;margin-top:6px}
+.divider p{font-size:28px;color:#c7d6e8;margin-top:16px;max-width:1000px}
+/* toc */
+.toc{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:40px}
+.toc .card{min-height:420px;display:flex;flex-direction:column}
+.toc .n{font-size:54px;font-weight:900;color:var(--teal);line-height:1}
+.toc h3{margin-top:22px;font-size:32px}
+.toc p{font-size:23px;color:var(--mut)}
+/* timeline */
+.tl{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:12px;margin-top:30px}
+.tl:before{content:'';position:absolute;left:0;right:0;top:46px;height:3px;background:linear-gradient(90deg,#3a5a86,var(--teal),var(--amber))}
+.tl .y{font-size:30px;font-weight:800;color:#fff;height:34px}
+.tl .dot{width:18px;height:18px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 6px rgba(46,230,214,.18);margin:3px 0 18px}
+.tl .t{font-size:25px;font-weight:700;color:#fff;line-height:1.3}
+.tl .d{font-size:20px;color:var(--mut);margin-top:6px;line-height:1.4}
+.phase{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:44px}
+.phase div{border-radius:14px;padding:20px 22px;font-size:23px;line-height:1.5;border:1px solid var(--line)}
+.phase b{display:block;font-size:28px;color:#fff;margin-bottom:4px}
+/* table */
+.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:24px;margin-top:10px}
+.cmp th,.cmp td{padding:17px 18px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.4;text-align:left}
+.cmp th{font-size:27px;color:#fff;background:rgba(255,255,255,.04)}
+.cmp td:first-child{color:var(--mut);font-weight:700;width:190px;white-space:nowrap}
+.cmp tr:last-child td{border-bottom:0}
+/* pyramid */
+.pyr{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:6px}
+.pyr div{border-radius:14px;padding:24px 22px;text-align:center;color:#06101e;font-weight:700}
+.pyr b{display:block;font-size:30px}
+.pyr span{font-size:21px;font-weight:600;opacity:.85}
+/* flow */
+.flow{display:flex;align-items:stretch;gap:10px;margin-top:20px}
+.flow .st{flex:1;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 18px;position:relative}
+.flow .st .n{font-size:17px;font-weight:800;color:var(--teal);letter-spacing:.1em}
+.flow .st h4{font-size:26px;margin:8px 0 8px;color:#fff;font-weight:700}
+.flow .st p{font-size:21px;color:var(--mut);margin:0;line-height:1.4}
+.flow .ar{display:flex;align-items:center;color:var(--teal);font-size:28px}
+/* loop */
+.loop{position:relative;width:560px;height:520px;margin:40px auto 0;transform:scale(1.18);transform-origin:top center}
+.loop .center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,#1b4d6e,#0b1a2f);border:2px solid var(--teal);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:24px;box-shadow:0 0 60px rgba(46,230,214,.25)}
+.loop .nd{position:absolute;width:170px;padding:12px;border-radius:14px;background:#0f2238;border:1px solid var(--line);text-align:center;font-size:19px}
+.loop .nd b{display:block;color:var(--teal);font-size:21px}
+.loop svg{position:absolute;inset:0}
+/* yt */
+.yt{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.yt a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;color:var(--tx)}
+.yt img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.yt div{padding:12px 14px;font-size:18px;line-height:1.35}
+.yt div b{display:block;font-size:20px;color:#fff;margin-bottom:3px}
+.yt div span{color:var(--mut);font-size:16.5px}
+.refs{columns:2;column-gap:40px;font-size:17px;line-height:1.5}
+.refs li{break-inside:avoid;margin:0 0 6px;color:#b9c7d8}
+.refs h4{font-size:20px;color:var(--teal);margin:8px 0 4px;break-after:avoid}
+.case .big{font-size:42px;font-weight:800;color:#fff;letter-spacing:-.03em}
+.case .big i{font-style:normal;color:var(--teal)}
+.case .lbl{font-size:17px;color:var(--mut);margin-bottom:10px}
+.reveal .progress{color:var(--teal);height:4px}
+.reveal .slide-number{background:transparent;color:#5d6e86;font-size:14px;right:auto;left:24px;bottom:12px}
+
+.roomy .card p,.roomy .card li{font-size:27px}
+.roomy .card h3{font-size:34px;margin-bottom:12px}
+.roomy .card{padding:28px 30px}
+.roomy .grid3 .card{min-height:230px}
+.roomy .cmp{font-size:25px}
+.roomy .cmp th,.roomy .cmp td{padding:18px 18px}
+.roomy .cmp th{font-size:28px}
+.roomy .note{font-size:26px}
+.roomy .flow .st{min-height:250px}
+.roomy .flow .st h4{font-size:29px}
+.roomy .flow .st p{font-size:23px}
+.toc .card{min-height:560px}
+.toc .n{font-size:72px}
+.toc h3{font-size:36px}
+.toc p{font-size:25px;line-height:1.5}
+.tl{margin-top:60px}
+.tl .d{font-size:22px}
+.phase{margin-top:70px}
+.pyr div{padding:36px 22px}
+.pyr b{font-size:33px}
+.pyr span{font-size:23px}
+.start .card{min-height:600px}
+.start .card p{font-size:30px;line-height:1.6}
+.start .card h3{font-size:38px}
+.start .kpi{font-size:110px}
+.agent .cmp{font-size:22px}
+.agent .cmp th,.agent .cmp td{padding:14px 14px}
+.agent .note{font-size:21px}
+.roles .cmp td,.roles .cmp th{padding:26px 20px}
+.roles .cmp{font-size:26px}
+@media print{.brand{display:none}}
+</style>
+</head>
+<body>
+<div class="brand">SUMEX · AI 업무자동화 TRAINING</div>
+<div class="reveal"><div class="slides">
+
+<!-- 1. COVER -->
+<section data-background-image="img/cover.webp" data-background-size="cover" data-background-opacity="0.55">
+  <div class="cover-wrap" style="background:linear-gradient(90deg,rgba(6,16,30,.96) 0%,rgba(6,16,30,.78) 48%,rgba(6,16,30,.1) 100%)">
+    <span class="kicker">SUMEX AX TRAINING · 2026.11</span>
+    <h1>수멕스<br>AI 업무자동화<br><span class="hl">TRAINING</span></h1>
+    <div class="cover-sub">AI vs 인간이 아니라, <b>AI</b> vs <b class="hl">AI + 인간</b>의 시대</div>
+    <div class="cover-meta"><b>최은성</b><br>주식회사 수멕스 영업부</div>
+  </div>
+</section>
+
+<!-- 2. TOC -->
+<section>
+  <span class="kicker">Contents</span>
+  <h2>오늘 이야기할 다섯 가지</h2>
+  <div class="toc">
+    <div class="card"><div class="n">01</div><h3>왜 AX인가?</h3><p>AI + 인간의 시대, 숫자로 보는 생산성 변화</p></div>
+    <div class="card"><div class="n">02</div><h3>AI의 진화</h3><p>초기 LLM → 중기 → 지금, 에이전틱 AI란?</p></div>
+    <div class="card"><div class="n">03</div><h3>도구와 레벨</h3><p>Claude · Gemini · ChatGPT, 초급부터 최고급까지</p></div>
+    <div class="card"><div class="n">04</div><h3>AI로 할 수 있는 일</h3><p>서류 · 콘텐츠 · 개발 · 피지컬 AI</p></div>
+    <div class="card"><div class="n">05</div><h3>그래서 수멕스는?</h3><p>우리 업무에 맞춘 자동화 설계와 로드맵</p></div>
+  </div>
+</section>
+
+<!-- ========== 01 ========== -->
+<section data-background-image="img/together.webp" data-background-size="cover" data-background-opacity="0.35">
+  <div class="divider" style="background:linear-gradient(90deg,rgba(6,16,30,.95),rgba(6,16,30,.55))">
+    <div class="num">01</div>
+    <h1>왜 AI 전환(AX)이<br>필요한가?</h1>
+    <p>AI가 사람을 대체하는 것이 아니라, <b class="hl">AI를 쓰는 사람</b>이 쓰지 않는 사람을 앞서는 시대입니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="g-55-45">
+    <div>
+      <span class="kicker">The real competition</span>
+      <h2>AI vs 인간? 아닙니다.<br><span class="hl">AI vs AI + 인간</span>입니다.</h2>
+      <div class="quote" style="margin:30px 0 18px">“AI는 인간을 대체하지 않는다.<br><span class="q">AI를 쓰는 인간</span>이<br>AI를 쓰지 않는 인간을 대체할 것이다.”</div>
+      <p class="mut" style="font-size:21px">카림 라카니(Karim Lakhani), 하버드 경영대학원 교수 · HBR 2023.08</p>
+      <div class="note teal" style="margin-top:22px">핵심은 경쟁 구도의 변화입니다. AI 혼자보다, 사람 혼자보다, <b>AI와 함께 일하는 사람</b>이 가장 강합니다. 다음 세 장의 실험이 이를 숫자로 보여줍니다.</div>
+    </div>
+    <img class="img-r" src="img/together.webp" alt="AI와 함께 일하는 사람" style="margin-top:40px">
+  </div>
+  <div class="src">출처: <a href="https://hbr.org/2023/08/ai-wont-replace-humans-but-humans-with-ai-will-replace-humans-without-ai" target="_blank">HBR (2023.08.04) “AI Won’t Replace Humans — But Humans With AI Will Replace Humans Without AI”</a></div>
+</section>
+
+<section>
+  <span class="kicker">Evidence 1 · Harvard × BCG 현장 실험</span>
+  <h2>컨설턴트 758명, AI를 쓰자 <span class="hl">더 많이·더 빨리·더 잘</span></h2>
+  <div class="g-55-45" style="margin-top:14px">
+    <div class="chart-box"><canvas id="c_bcg"></canvas></div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><div class="kpi">+40<small>%</small></div><div class="kpi-l">결과물 품질 향상 (AI 미사용 그룹 대비)</div></div>
+      <div class="card" style="margin-bottom:16px"><div class="kpi">+25.1<small>%</small></div><div class="kpi-l">과제 처리 속도 향상 · 처리 과제 수 +12.2%</div></div>
+      <div class="note">단, AI가 잘 못하는 과제(프런티어 밖)에서는 AI 사용자의 정답률이 <b>19%p 낮았습니다.</b> AI 결과를 그대로 믿지 말고 <b>사람이 검증</b>해야 하는 이유입니다.</div>
+    </div>
+  </div>
+  <div class="src">출처: Dell’Acqua, Mollick, Lakhani 외, <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=64700" target="_blank">“Navigating the Jagged Technological Frontier” (HBS Working Paper)</a> · <a href="https://pubsonline.informs.org/doi/10.1287/orsc.2025.21838" target="_blank">Organization Science (2026)</a> · <a href="https://mitsloan.mit.edu/sites/default/files/2023-10/SSRN-id4573321.pdf" target="_blank">원문 PDF</a></div>
+</section>
+
+<section>
+  <span class="kicker">Evidence 2 · P&amp;G 776명 실험 “사이버네틱 팀메이트”</span>
+  <h2><span class="hl">AI와 일하는 1명</span> = 사람 2명으로 된 팀</h2>
+  <div class="g-55-45" style="margin-top:14px">
+    <div class="chart-box"><canvas id="c_pg"></canvas></div>
+    <div>
+      <p class="lead" style="font-size:24px">P&amp;G 실무자들이 실제 신제품 개발 과제를 <b>①혼자 ②2인 팀 ③혼자+AI ④2인 팀+AI</b>로 나눠 수행했습니다.</p>
+      <ul style="font-size:22px">
+        <li>AI 없는 2인 팀은 혼자보다 <b>0.24 표준편차</b> 우수</li>
+        <li>그런데 <b class="hl">혼자+AI</b>가 <b>0.37</b>로 AI 없는 팀과 같거나 더 높음</li>
+        <li><b>팀+AI</b>가 0.39로 가장 높고, 최상위 10% 아이디어도 가장 많이 나옴</li>
+        <li>AI를 쓰면 R&amp;D·영업 출신 구분 없이 <b>균형 잡힌 결과</b></li>
+      </ul>
+      <div class="note teal" style="margin-top:14px">AI는 ‘도구’를 넘어 <b>동료(teammate)</b> 역할을 합니다.</div>
+    </div>
+  </div>
+  <div class="src">출처: Dell’Acqua 외, <a href="https://www.nber.org/papers/w33641" target="_blank">NBER Working Paper 33641 (2025)</a> · <a href="https://doi.org/10.1287/orsc.2025.20702" target="_blank">Organization Science (2026)</a> · <a href="https://www.oneusefulthing.org/p/the-cybernetic-teammate" target="_blank">Ethan Mollick, “The Cybernetic Teammate” (수치)</a></div>
+</section>
+
+<section>
+  <span class="kicker">Evidence 3 · 업무별 생산성 연구</span>
+  <h2>신입일수록, 반복 업무일수록 <span class="hl">효과가 크다</span></h2>
+  <div class="g-55-45" style="margin-top:14px">
+    <div class="chart-box"><canvas id="c_prod"></canvas></div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><h3>고객상담원 5,179명 (Stanford·MIT)</h3><p>AI 보조 도입 후 시간당 해결 건수 <b class="hl">+14%</b>, 신입·저숙련자는 <b class="hl">+34%</b>. AI가 우수 직원의 노하우를 신입에게 전달하는 효과.</p></div>
+      <div class="card"><h3>Stanford AI Index 2026 종합</h3><p>연구별로 고객지원 14~15%, 소프트웨어 개발 <b class="hl">26%</b>, 마케팅 산출물 <b class="hl">50%</b> 향상이 보고되었습니다.</p></div>
+    </div>
+  </div>
+  <div class="src">출처: Brynjolfsson, Li, Raymond, <a href="https://www.nber.org/papers/w31161" target="_blank">“Generative AI at Work” NBER w31161</a> · <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank">Stanford HAI, AI Index Report 2026 – Economy</a></div>
+</section>
+
+<section>
+  <span class="kicker">Global · 확산 속도</span>
+  <h2>역사상 가장 빠르게 퍼진 기술</h2>
+  <div class="g-55-45" style="margin-top:14px">
+    <div class="chart-box"><canvas id="c_wau"></canvas></div>
+    <div class="grid2" style="gap:16px">
+      <div class="card"><div class="kpi">88<small>%</small></div><div class="kpi-l">AI를 1개 이상 업무에 쓰는 기업 (2024년 78% → 2025년)</div></div>
+      <div class="card"><div class="kpi">53<small>%</small></div><div class="kpi-l">생성형 AI 보급률, 3년 만에 도달. PC·인터넷보다 빠름</div></div>
+      <div class="card"><div class="kpi">2<small>개월</small></div><div class="kpi-l">ChatGPT 출시 후 사용자 1억 명까지 (틱톡 9개월, 인스타그램 2.5년)</div></div>
+      <div class="card"><div class="kpi">9<small>억</small></div><div class="kpi-l">ChatGPT 주간 사용자 (2026.02 발표), 유료 구독 5천만</div></div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">Stanford AI Index 2026</a> · <a href="https://www.euronews.com/2023/02/02/openai-chatgpt" target="_blank">Reuters/UBS (2023.02)</a> · <a href="https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/" target="_blank">TechCrunch (2026.02.27)</a> · 차트: OpenAI 공식 발표치(2023.11~2026.02) 정리 <a href="https://searchengineland.com/guide/chatgpt-stats" target="_blank">Search Engine Land</a></div>
+</section>
+
+<section>
+  <span class="kicker">Korea · 국내 근로자 데이터</span>
+  <h2>한국 직장인 절반 이상이 이미 쓰고, <span class="hl">시간이 줄었다</span></h2>
+  <div class="grid2" style="margin-top:14px">
+    <div class="chart-box sm"><canvas id="c_kr_use"></canvas></div>
+    <div class="chart-box sm"><canvas id="c_kr_time"></canvas></div>
+  </div>
+  <div class="grid3" style="margin-top:16px">
+    <div class="note teal" style="font-size:21px"><b>한국은행</b>: 취업자 51.8%가 업무에 생성형 AI 활용. 확산 속도는 인터넷 도입기의 약 8배.</div>
+    <div class="note teal" style="font-size:21px"><b>대한상의</b>: AI 없었다면 주당 8.4시간 더 일해야 했다(17.6% 절감). 단, 능숙한 ‘고도 활용자’는 13.6%뿐.</div>
+    <div class="note teal" style="font-size:21px"><b>삼성SDS</b>: 사용자 73%가 “업무시간이 줄었다”. 줄었다는 응답자 60.2%는 하루 1시간 이상 절감.</div>
+  </div>
+  <div class="src">※ 조사 방식(실측 vs 자기응답)이 달라 절감률 차이가 큼. 출처: <a href="https://www.bok.or.kr/portal/bbs/B0000347/view.do?menuNo=201106&nttId=10098529" target="_blank">한국은행 블로그 “AI 도입은 생산성을 높이는가?” (2026.06)</a> · <a href="https://www.yna.co.kr/amp/view/AKR20260128023800003" target="_blank">연합뉴스, 대한상의 SGI 보고서 (2026.01.28)</a> · <a href="https://eiec.kdi.re.kr/policy/domesticView.do?ac=0000202572" target="_blank">KDI 경제정보센터 요약</a> · <a href="http://www.samsungsds.com/kr/insights/korean-workers-gen-ai-survey-2026.html" target="_blank">삼성SDS 인사이트리포트 (2026.01.16)</a></div>
+</section>
+
+<section>
+  <span class="kicker">Korea · 기업 AX 사례</span>
+  <h2>국내 대기업은 이미 <span class="hl">에이전트로 일하는 방식</span>을 바꾸는 중</h2>
+  <div class="g-55-45" style="margin-top:10px;grid-template-columns:1fr 1.15fr">
+    <div class="chart-box" style="height:560px"><canvas id="c_cases"></canvas></div>
+    <div class="grid2" style="gap:14px">
+      <div class="card case"><div class="lbl">LG전자 · SW 개발 에이전트</div><div class="big"><i>80%</i> 자동화</div><p>1인당 연 1,200시간+ 절감 예상. 2~3년 내 생산성 30% 개선 목표</p></div>
+      <div class="card case"><div class="lbl">포스코DX · 회계 결산 에이전트</div><div class="big">업무시간 <i>80%</i>↓</div><p>ERP 데이터 자동 검증부터 보고서까지. AI 직원 113종 운영</p></div>
+      <div class="card case"><div class="lbl">SK텔레콤 · 1인 1 에이전트</div><div class="big"><i>4,000</i>명+</div><p>직접 에이전트를 만든 구성원. 정기 활용 에이전트 1,500개, 데이터 정비로 정답률 40%→80%+</p></div>
+      <div class="card case"><div class="lbl">포스코 · 영업·마케팅 에이전트</div><div class="big">3개월 <i>25</i>개</div><p>에이전트 실험. 전사 적용 시 업무 효율 약 10% 향상 예상</p></div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01416966645582744" target="_blank">이데일리 (2026.09.22)</a> · <a href="http://www.smedaily.co.kr/news/articleView.html?idxno=361001" target="_blank">중소기업신문 LG전자 AX 해커톤 (2026.07.29)</a> · <a href="https://www.poscodx.com/kor/pr/newsRoomView.do?col&num=7101&page&sw" target="_blank">포스코DX 뉴스룸 (2026.03.09)</a> · <a href="https://www.etoday.co.kr/news/view/2608737" target="_blank">이투데이 (2026.07.29)</a> · <a href="https://news.sktelecom.com/232606" target="_blank">SKT 뉴스룸 (2026.11.01)</a> · <a href="https://www.seoulfn.com/news/articleView.html?idxno=641583" target="_blank">서울파이낸스</a> · <a href="https://ditoday.com/3%EA%B0%9C%EC%9B%94%EA%B0%84-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8-25%EA%B0%9C-%EC%8B%A4%ED%97%98-%ED%8F%AC%EC%8A%A4%EC%BD%94-ax-%EC%A0%84%EB%9E%B5-%EA%B3%B5%EA%B0%9C" target="_blank">디지털인사이트 (2026.06.12)</a></div>
+</section>
+
+<section>
+  <span class="kicker">Warning · 생산성 단절</span>
+  <h2>그런데, AI 도구만 깔면 <span class="rs">회사 성과는 안 바뀐다</span></h2>
+  <div class="g-55-45" style="margin-top:14px">
+    <div class="chart-box"><canvas id="c_mck"></canvas></div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><h3>한국은행: “AI 생산성 단절”</h3><p>AI로 줄어든 시간과 실제 업무 처리량 증가의 상관계수는 <b class="rs">0</b>. 시간은 아꼈지만 업무 흐름·조직·인력 배치가 그대로라서 성과로 이어지지 않았습니다.</p></div>
+      <div class="card" style="margin-bottom:16px"><h3>McKinsey 2026: 개인 vs 회사</h3><p>개인 생산성이 올랐다 <b class="hl">80%</b> · 회사 이익(EBIT)에 영향 <b>37%</b> · AI 고성과 기업 <b class="am">6%</b>. 고성과 기업의 약 3/4은 <b>업무 흐름을 재설계</b>(다른 기업은 1/4).</p></div>
+      <div class="note"><b>결론:</b> “AI를 쓰는 것”과 “AI 중심으로 일을 다시 짜는 것”은 다릅니다. 수멕스가 가야 할 길은 <b>후자</b>입니다.</div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://www.bok.or.kr/portal/bbs/P0002353/view.do?depth=200433&menuNo=200433&nttId=10098322&programType=newsData&relate=Y" target="_blank">BOK 이슈노트 제2026-12호 “AI 도입은 생산성을 높이는가? 초기 3년의 효과 분석”</a> · <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank">McKinsey, The state of AI in 2026 (2026.08.25)</a> · <a href="https://www.mckinsey.com/capabilities/people-and-organization/our-insights/ai-is-changing-work-now-it-has-to-change-the-organization" target="_blank">McKinsey Quarterly (2026.10.05)</a></div>
+</section>
+
+<section>
+  <span class="kicker">Jobs · 세계경제포럼</span>
+  <h2>일자리는 사라지기보다 <span class="hl">재구성</span>된다</h2>
+  <div class="g-55-45" style="margin-top:14px">
+    <div class="chart-box"><canvas id="c_wef"></canvas></div>
+    <div>
+      <div class="card" style="margin-bottom:16px"><div class="kpi">+7,800<small>만 개</small></div><div class="kpi-l">2025~2030 전 세계 일자리 순증 전망 (창출 1억 7천만, 대체 9,200만)</div></div>
+      <div class="card" style="margin-bottom:16px"><div class="kpi">39<small>%</small></div><div class="kpi-l">2030년까지 바뀌거나 쓸모없어질 기존 업무 역량의 비중</div></div>
+      <div class="note teal">가장 빠르게 커지는 역량 1위는 <b>AI·빅데이터</b>. 영업직(Salespersons)은 절대 규모로 크게 늘어나는 직군에 포함되었습니다.</div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025" target="_blank">World Economic Forum, The Future of Jobs Report 2025</a> · <a href="https://reports.weforum.org/docs/WEF_Future_of_Jobs_Report_2025.pdf" target="_blank">보고서 PDF</a></div>
+</section>
+
+<section data-background-image="img/future.webp" data-background-size="cover" data-background-opacity="0.4">
+  <div class="divider" style="background:linear-gradient(90deg,rgba(6,16,30,.95) 0%,rgba(6,16,30,.7) 55%,rgba(6,16,30,.2) 100%)">
+    <span class="kicker">Chapter 01 결론</span>
+    <h1 style="font-size:70px">반복은 AI가,<br>사람은 <span class="hl">더 가치 있는 일</span>에.</h1>
+    <div class="grid3" style="margin-top:34px;max-width:1150px">
+      <div class="card"><h3 class="hl">관계</h3><p>병원·의료진과의 신뢰, 고객의 마음을 읽는 일</p></div>
+      <div class="card"><h3 class="hl">판단</h3><p>예외 처리, 가격·조건 결정, AI 결과 검증</p></div>
+      <div class="card"><h3 class="hl">현장</h3><p>수술 지원, 데모·설치, AS처럼 몸으로 하는 전문성</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 02 ========== -->
+<section data-background-image="img/coding.webp" data-background-size="cover" data-background-opacity="0.3">
+  <div class="divider" style="background:linear-gradient(90deg,rgba(6,16,30,.95),rgba(6,16,30,.55))">
+    <div class="num">02</div>
+    <h1>AI는 어떻게<br>진화해 왔나</h1>
+    <p>말 잘하는 자동완성 → 보고 생각하는 비서 → <b class="hl">스스로 일하는 동료</b></p>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Timeline</span>
+  <h2>초기 LLM에서 에이전트까지, 9년</h2>
+  <div class="tl">
+    <div><div class="y">2017</div><div class="dot"></div><div class="t">트랜스포머</div><div class="d">구글 “Attention Is All You Need”. 모든 LLM의 뿌리</div></div>
+    <div><div class="y">2020</div><div class="dot"></div><div class="t">GPT-3</div><div class="d">거대 언어모델의 가능성 확인. 아직은 개발자용</div></div>
+    <div><div class="y">2022.11</div><div class="dot"></div><div class="t">ChatGPT</div><div class="d">누구나 대화로 AI 사용. 2개월 만에 1억 명</div></div>
+    <div><div class="y">2023</div><div class="dot"></div><div class="t">GPT-4 · Claude · Gemini</div><div class="d">이미지를 보고 이해하는 멀티모달, 경쟁 본격화</div></div>
+    <div><div class="y">2024</div><div class="dot"></div><div class="t">추론 모델 · 도구 연결</div><div class="d">답하기 전에 “생각”하는 모델(o1), 외부 도구 연결 표준(MCP)</div></div>
+    <div><div class="y">2025</div><div class="dot"></div><div class="t">에이전트 원년</div><div class="d">Claude Code, 컴퓨터 사용 AI. Karpathy “Software 3.0”</div></div>
+    <div><div class="y">2026</div><div class="dot" style="background:var(--amber)"></div><div class="t">하네스 · 장시간 자율 작업</div><div class="d">사람은 방향, 에이전트는 실행. 피지컬 AI 공장 투입 시작</div></div>
+  </div>
+  <div class="phase">
+    <div style="background:rgba(79,140,255,.09)"><b>초기 (2017~2022)</b>말 잘하는 자동완성. 질문하면 답한다. 틀려도 모른다.</div>
+    <div style="background:rgba(46,230,214,.09)"><b>중기 (2023~2024)</b>보고·듣고·생각하는 비서. 사람이 시키는 한 단계씩.</div>
+    <div style="background:rgba(255,181,71,.1)"><b>지금 (2025~)</b>목표를 주면 계획하고, 도구를 쓰고, 결과를 확인하는 <span class="am" style="font-weight:700">에이전트</span>.</div>
+  </div>
+  <div class="note teal" style="margin-top:30px">Andrej Karpathy: “소프트웨어 3.0” 시대에는 <b>자연어(우리말 지시)가 곧 프로그램</b>입니다. 코딩을 몰라도, 일을 잘 설명할 수 있는 사람이 AI를 가장 잘 씁니다.</div>
+  <div class="src">출처: <a href="https://arxiv.org/abs/1706.03762" target="_blank">Vaswani 외 (2017) arXiv:1706.03762</a> · <a href="https://www.euronews.com/2023/02/02/openai-chatgpt" target="_blank">Reuters/UBS (2023)</a> · <a href="https://www.youtube.com/watch?v=LCEmiRjPEtQ" target="_blank">Karpathy “Software Is Changing (Again)” YC 2025</a> · <a href="https://openai.com/index/harness-engineering/" target="_blank">OpenAI “Harness engineering” (2026.02)</a> · <a href="https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks" target="_blank">Boston Dynamics (2026.09)</a></div>
+</section>
+
+<section>
+  <span class="kicker">METR · AI 에이전트의 “무어의 법칙”</span>
+  <h2>AI가 혼자 끝내는 일의 길이, <span class="hl">약 7개월마다 2배</span></h2>
+  <div class="g-55-45" style="margin-top:10px;grid-template-columns:1.55fr 1fr">
+    <div class="chart-box" style="height:580px"><canvas id="c_metr"></canvas></div>
+    <div>
+      <div class="card" style="margin-bottom:14px"><div class="kpi">4<small>분</small></div><div class="kpi-l">GPT-4 (2023.03): 전문가가 4분 걸리는 일을 50% 확률로 완수</div></div>
+      <div class="card" style="margin-bottom:14px"><div class="kpi">12<small>시간</small></div><div class="kpi-l">Claude Opus 4.6 (2026.02): 전문가 기준 약 12시간 분량</div></div>
+      <div class="note">세로축은 <b>로그 눈금</b>입니다. 2019~2025 전체 추세는 약 7개월(≈196일)마다 2배, 2024년 이후만 보면 더 빠릅니다. 단, 소프트웨어 과제·50% 성공률 기준이라 “맡기면 다 된다”는 뜻은 아닙니다.</div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks" target="_blank">METR “Measuring AI Ability to Complete Long Tasks” (2025.03)</a> · <a href="https://metr.org/blog/2026-01-29-time-horizon-1-1/" target="_blank">METR Time Horizon 1.1 (2026.01)</a> · 원자료 <a href="https://metr.org/time-horizons" target="_blank">metr.org/time-horizons</a> (50% time horizon, 대표 모델만 표시)</div>
+</section>
+
+<section class="agent">
+  <span class="kicker">Agentic AI</span>
+  <h2>에이전틱 AI = <span class="hl">목표를 주면 스스로 일하는 AI</span></h2>
+  <div class="g-55-45" style="margin-top:6px;grid-template-columns:1fr 1fr">
+    <div>
+      <table class="cmp">
+        <tr><th></th><th>챗봇 (지금까지)</th><th class="hl">에이전트 (지금부터)</th></tr>
+        <tr><td>입력</td><td>질문 한 줄</td><td>목표 + 규칙 + 권한</td></tr>
+        <tr><td>일하는 방식</td><td>답변만 하고 끝</td><td>계획 → 도구 사용 → 확인 → 수정</td></tr>
+        <tr><td>도구</td><td>없음 (대화창 안)</td><td>브라우저, ERP, 메일, 파일, 메신저</td></tr>
+        <tr><td>사람의 역할</td><td>다음 단계를 직접 수행</td><td>방향 설정과 최종 승인</td></tr>
+      </table>
+      <div class="note teal" style="margin-top:22px"><b>Anthropic의 정의:</b> 워크플로우는 정해진 코드 경로를 따르고, 에이전트는 LLM이 스스로 과정과 도구 사용을 결정하며 작업 방법을 통제하는 시스템.</div>
+      <p style="margin-top:14px;font-size:20px" class="mut">앤드류 응(Andrew Ng)의 4가지 에이전트 패턴: <span class="pill">성찰 Reflection</span><span class="pill">도구 사용 Tool use</span><span class="pill">계획 Planning</span><span class="pill">멀티 에이전트 협업</span></p>
+    </div>
+    <div class="loop">
+      <svg viewBox="0 0 560 520"><defs><marker id="ah" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2ee6d6"/></marker></defs>
+        <circle cx="280" cy="260" r="185" fill="none" stroke="#2ee6d6" stroke-opacity=".35" stroke-width="2" stroke-dasharray="6 8"/>
+        <path d="M380 108 A185 185 0 0 1 460 230" fill="none" stroke="#2ee6d6" stroke-width="3" marker-end="url(#ah)"/>
+        <path d="M455 300 A185 185 0 0 1 360 425" fill="none" stroke="#2ee6d6" stroke-width="3" marker-end="url(#ah)"/>
+        <path d="M200 428 A185 185 0 0 1 105 300" fill="none" stroke="#2ee6d6" stroke-width="3" marker-end="url(#ah)"/>
+        <path d="M102 225 A185 185 0 0 1 180 105" fill="none" stroke="#2ee6d6" stroke-width="3" marker-end="url(#ah)"/>
+      </svg>
+      <div class="center">목표<br><span style="font-size:17px;color:#9fe9e2;font-weight:600">“이번 주 사용분<br>주문서 입력”</span></div>
+      <div class="nd" style="left:195px;top:0"><b>① 계획</b>할 일을 쪼갠다</div>
+      <div class="nd" style="right:-10px;top:200px"><b>② 실행</b>ERP·사이트·메일 사용</div>
+      <div class="nd" style="left:195px;bottom:0"><b>③ 확인</b>결과·중복 검증</div>
+      <div class="nd" style="left:-10px;top:200px"><b>④ 개선</b>틀리면 고쳐서 반복</div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank">Anthropic “Building effective agents” (2024.12)</a> · <a href="https://www.youtube.com/watch?v=q1XFm21I-VQ" target="_blank">Andrew Ng, AI Agentic Workflows (Snowflake Summit 2024)</a></div>
+</section>
+
+<section>
+  <span class="kicker">Frontier Firm</span>
+  <h2>회사는 이렇게 바뀐다: <span class="hl">사람 + 에이전트 팀</span></h2>
+  <div class="g-55-45" style="margin-top:10px">
+    <div>
+      <div class="flow" style="flex-direction:column;gap:14px;margin-top:6px">
+        <div class="st"><span class="n">PHASE 1</span><h4>AI 비서</h4><p>모든 직원이 AI 비서를 쓰며 같은 일을 더 빠르고 더 잘한다</p></div>
+        <div class="st"><span class="n">PHASE 2</span><h4>디지털 동료</h4><p>에이전트가 팀에 합류해 사람의 지시로 특정 업무를 맡는다</p></div>
+        <div class="st" style="border-color:var(--amber)"><span class="n" style="color:var(--amber)">PHASE 3</span><h4>사람이 방향, 에이전트가 운영</h4><p>에이전트가 업무 프로세스 전체를 돌리고 필요할 때 사람에게 확인받는다. 모든 직원이 <b>“에이전트 보스”</b>가 된다</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="chart-box sm" style="height:400px"><canvas id="c_gartner"></canvas></div>
+      <div class="note" style="margin-top:16px">Gartner: 2028년에는 일상 업무 의사결정의 <b>15% 이상</b>을 에이전틱 AI가 자율적으로 내릴 것.</div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born" target="_blank">Microsoft Work Trend Index 2025 “The Frontier Firm is born”</a> · <a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025" target="_blank">Gartner 보도자료 (2025.08.26)</a> · <a href="https://www.gartner.com/en/articles/3-bold-and-actionable-predictions-for-the-future-of-genai" target="_blank">Gartner GenAI Predictions</a></div>
+</section>
+
+<!-- ========== 03 ========== -->
+<section data-background-image="img/content.webp" data-background-size="cover" data-background-opacity="0.3">
+  <div class="divider" style="background:linear-gradient(90deg,rgba(6,16,30,.95),rgba(6,16,30,.55))">
+    <div class="num">03</div>
+    <h1>Claude · Gemini · ChatGPT<br>그리고 활용 레벨</h1>
+    <p>무엇을 쓰느냐보다 <b class="hl">어떻게 쓰느냐</b>가 성과를 가릅니다.</p>
+  </div>
+</section>
+
+<section class="roomy">
+  <span class="kicker">3대 AI 비교 · 2026년 11월 기준</span>
+  <h2>셋 다 똑똑하다. <span class="hl">강점과 생태계</span>가 다르다</h2>
+  <table class="cmp">
+    <tr><th></th><th>ChatGPT</th><th>Claude</th><th>Gemini</th></tr>
+    <tr><td>만든 곳</td><td>OpenAI</td><td>Anthropic</td><td>Google (DeepMind)</td></tr>
+    <tr><td>최신 라인업</td><td>GPT-6 계열 (Astra, 6.1 Sol·Terra)</td><td>Claude 5.5 계열 (Opus · Sonnet · Haiku)</td><td>Gemini 4 계열 (2026.9~10 발표) · 3.8 Flash</td></tr>
+    <tr><td>대표 강점</td><td>가장 많은 사용자, 이미지 생성·음성 대화·검색까지 되는 <b>만능형</b></td><td>긴 문서 이해와 글쓰기, <b>코딩·업무 에이전트</b>(Claude Code), 100만 토큰 문맥</td><td>Gmail·Docs·Drive·YouTube와 <b>구글 생태계 연동</b>, 영상·이미지 멀티모달</td></tr>
+    <tr><td>수멕스 추천 용도</td><td>일상 질문, 홍보 이미지, 음성 메모 정리</td><td>거래명세서·엑셀 분석, 서류 자동화, 업무 에이전트</td><td>구글 문서 작업, 영상·사진 자료 분석, 검색 기반 조사</td></tr>
+  </table>
+  <div class="note teal" style="margin-top:22px">Stanford AI Index 2026: 최상위 모델들의 벤치마크 점수 차이가 좁아지면서 <b>비용·속도·신뢰성·업무 특화</b>가 선택 기준이 되고 있습니다. 결론: 하나만 고집하지 말고 <b>업무에 맞게 섞어 쓰기</b>.</div>
+  <div class="src">※ ‘강점·용도’는 각 사 공개 자료 기반의 일반적 평가입니다. 출처: <a href="https://www.anthropic.com/claude-opus-5-5" target="_blank">Anthropic, Claude Opus 5.5 (2026.09.22)</a> · <a href="https://platform.claude.com/docs/en/models/opus-5-5/overview" target="_blank">Claude 모델 문서</a> · <a href="https://openai.com/index/gpt-6-astra" target="_blank">OpenAI, GPT-6 Astra</a> · <a href="https://openai.com/products/release-notes/" target="_blank">OpenAI Release Notes</a> · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon" target="_blank">Google, Gemini 4 Argon (2026.09.30)</a> · <a href="https://hai.stanford.edu/assets/files/ai_index_report_2026.pdf" target="_blank">AI Index 2026</a></div>
+</section>
+
+<section class="roomy">
+  <span class="kicker">AI 활용 레벨</span>
+  <h2>당신은 지금 <span class="hl">몇 레벨</span>인가요?</h2>
+  <div class="g-55-45" style="grid-template-columns:1.1fr 1fr;margin-top:6px">
+    <div class="pyr">
+      <div style="width:62%;background:linear-gradient(90deg,#ffb547,#ffd27a)"><b>Lv.4 최고급 · AI 오케스트레이터</b><span>여러 에이전트를 팀처럼 지휘, 회사 업무 흐름 자체를 재설계</span></div>
+      <div style="width:74%;background:linear-gradient(90deg,#2ee6d6,#7ff3e9)"><b>Lv.3 고급 · 개발 · 자동화</b><span>바이브 코딩, 업무 자동화, 하네스 엔지니어링</span></div>
+      <div style="width:87%;background:linear-gradient(90deg,#4f8cff,#8fb5ff)"><b>Lv.2 중급 · 콘텐츠 · 마케팅</b><span>제안서·브로슈어·SNS·이미지·보고서 초안 생성</span></div>
+      <div style="width:100%;background:linear-gradient(90deg,#94a3b8,#cbd5e1)"><b>Lv.1 초급 · 질문과 답변</b><span>검색 대신 묻기, 번역, 요약</span></div>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px"><h3 class="am">최고급은 무엇이 다른가?</h3><p>“AI에게 일을 시키는 사람”이 아니라 <b>“AI가 일하는 구조를 설계하는 사람”</b>. Microsoft는 이를 <b>에이전트 보스</b>, Karpathy는 <b>에이전틱 엔지니어링</b>이라 부릅니다. 규칙·지식·검증을 쌓아 AI가 혼자 반복하게 만들고, 사람은 예외와 승인만 봅니다.</p></div>
+      <div class="card"><div class="kpi">13.6<small>%</small></div><div class="kpi-l">국내 근로자 중 상황에 맞게 능숙하게 프롬프트를 쓰는 ‘고도 활용자’ 비율 (대한상의). 사용 시간이 아니라 <b>활용 역량</b>이 생산성을 올렸습니다.</div></div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://www.yna.co.kr/amp/view/AKR20260128023800003" target="_blank">연합뉴스, 대한상의 SGI (2026.01.28)</a> · <a href="https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born" target="_blank">Microsoft Work Trend Index 2025</a> · <a href="https://www.youtube.com/watch?v=96jN2OCOfLs" target="_blank">Karpathy “From Vibe Coding to Agentic Engineering” (Sequoia AI Ascent 2026)</a></div>
+</section>
+
+<section>
+  <span class="kicker">Harness Engineering</span>
+  <h2>에이전트 = <span class="hl">모델</span> + <span class="am">하네스(일하는 환경)</span></h2>
+  <div class="flow" style="margin-top:8px">
+    <div class="st"><span class="n">2023</span><h4>프롬프트 엔지니어링</h4><p>질문을 잘 쓰는 기술</p></div><div class="ar">→</div>
+    <div class="st"><span class="n">2025</span><h4>컨텍스트 엔지니어링</h4><p>AI가 볼 자료를 잘 골라 주는 기술</p></div><div class="ar">→</div>
+    <div class="st" style="border-color:var(--amber)"><span class="n" style="color:var(--amber)">2026</span><h4>하네스 엔지니어링</h4><p>도구·규칙·기억·검증·권한까지, AI가 일하는 환경 전체를 설계</p></div>
+  </div>
+  <div class="grid2" style="margin-top:22px">
+    <div class="grid3" style="gap:12px">
+      <div class="card"><h3 class="hl">지침서</h3><p>업무 규칙과 스킬 (예: 병원별 마감 규칙)</p></div>
+      <div class="card"><h3 class="hl">도구</h3><p>브라우저, 이카운트, 메일, 텔레그램</p></div>
+      <div class="card"><h3 class="hl">기억</h3><p>단가표, 품목 코드, 과거 처리 이력</p></div>
+      <div class="card"><h3 class="hl">권한·승인</h3><p>외부 발송 전 사람 승인</p></div>
+      <div class="card"><h3 class="hl">검증</h3><p>중복·금액·수량 자동 체크</p></div>
+      <div class="card"><h3 class="hl">기록</h3><p>무엇을 했는지 로그로 남김</p></div>
+    </div>
+    <div>
+      <div class="quote" style="font-size:34px">“AI에게 1,000쪽짜리 매뉴얼이 아니라 <span class="q">지도</span>를 줘라.”</div>
+      <p class="mut" style="font-size:19px">OpenAI 엔지니어링 팀, “Harness engineering” (2026.02). 사람이 키를 잡고(steer), 에이전트가 실행(execute)한다.</p>
+      <div class="note teal" style="margin-top:16px">같은 AI라도 <b>하네스가 좋으면</b> 결과가 완전히 달라집니다. 수멕스의 노하우(양식·단가·마감 규칙)를 하네스로 만드는 것이 곧 우리의 경쟁력입니다.</div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://openai.com/index/harness-engineering/" target="_blank">OpenAI “Harness engineering: leveraging Codex in an agent-first world”</a> · <a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness" target="_blank">LangChain “The Anatomy of an Agent Harness” (2026.03)</a> · <a href="https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents" target="_blank">Anthropic Engineering (2026.01)</a> · <a href="https://www.youtube.com/watch?v=CEvIs9y1uog" target="_blank">Anthropic “Don’t Build Agents, Build Skills Instead”</a></div>
+</section>
+
+<!-- ========== 04 ========== -->
+<section data-background-image="img/paper.webp" data-background-size="cover" data-background-opacity="0.3">
+  <div class="divider" style="background:linear-gradient(90deg,rgba(6,16,30,.95),rgba(6,16,30,.55))">
+    <div class="num">04</div>
+    <h1>AI로 할 수 있는 일</h1>
+    <p>서류 · 콘텐츠 · 개발 · 피지컬 AI. 그리고 이 모든 것을 <b class="hl">자동화</b>하는 것이 지금 모든 기업의 화두입니다.</p>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">What AI can do</span>
+  <h2>네 가지 영역, 이미 현실입니다</h2>
+  <div class="grid4" style="margin-top:14px">
+    <div class="card" style="padding:0;overflow:hidden"><img src="img/paper.webp" style="width:100%;height:210px;object-fit:cover;display:block"><div style="padding:16px 18px"><h3>서류 · 페이퍼워크</h3><p>명세서, 주문서, 정산, 보고서, 메일 요약</p><div class="kpi" style="font-size:44px">72.4<small>%</small></div><div class="kpi-l">AI로 시간을 줄인 영역 1위 ‘자료조사·요약’ (문서·보고서 작성 60.4%)</div></div></div>
+    <div class="card" style="padding:0;overflow:hidden"><img src="img/content.webp" style="width:100%;height:210px;object-fit:cover;display:block"><div style="padding:16px 18px"><h3>콘텐츠 제작</h3><p>제품 소개서, 교육자료, 이미지, 영상, 웹페이지</p><div class="kpi" style="font-size:44px">+50<small>%</small></div><div class="kpi-l">연구에서 보고된 마케팅 산출물 증가 (AI Index 2026)</div></div></div>
+    <div class="card" style="padding:0;overflow:hidden"><img src="img/coding.webp" style="width:100%;height:210px;object-fit:cover;display:block"><div style="padding:16px 18px"><h3>코딩 · 개발</h3><p>말로 프로그램 만들기(바이브 코딩), 자동화 스크립트</p><div class="kpi" style="font-size:44px">60→~100<small>%</small></div><div class="kpi-l">코딩 벤치마크 SWE-bench Verified, 단 1년 만의 변화</div></div></div>
+    <div class="card" style="padding:0;overflow:hidden"><img src="img/physical.webp" style="width:100%;height:210px;object-fit:cover;display:block"><div style="padding:16px 18px"><h3>피지컬 AI</h3><p>수술 로봇, 휴머노이드, 물류 로봇</p><div class="kpi" style="font-size:44px">200<small>만 건+</small></div><div class="kpi-l">Stryker Mako 로봇 수술 누적 건수 (45개국+)</div></div></div>
+  </div>
+  <div class="src">출처: <a href="http://www.samsungsds.com/kr/insights/korean-workers-gen-ai-survey-2026.html" target="_blank">삼성SDS 직장인 630명 조사 (2026.01)</a> · <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank">AI Index 2026 Economy</a> · <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">AI Index 2026 Top Takeaways</a> · <a href="https://www.stryker.com/content/dam/stryker/about/annual-review/2025/Stryker-2025-Comprehensive-Report.pdf" target="_blank">Stryker 2025 Comprehensive Report</a> · 이미지: AI 생성</div>
+</section>
+
+<section>
+  <span class="kicker">Physical AI</span>
+  <h2>AI가 화면 밖으로: <span class="hl">피지컬 AI</span></h2>
+  <div class="g-55-45" style="grid-template-columns:1fr 1.05fr;margin-top:6px">
+    <img class="img-r" src="img/physical.webp" alt="수술 로봇과 휴머노이드" style="max-height:640px;object-fit:cover">
+    <div>
+      <div class="card" style="margin-bottom:14px"><h3>우리가 파는 제품의 미래, Stryker Mako</h3><p>로봇팔 보조 정형외과 수술 시스템. <b class="hl">45개국 이상</b>, 누적 <b class="hl">200만 건 이상</b> 로봇 수술. 2025년 4세대 <b>Mako 4</b>, 2026.07 미국에서 핸드헬드 로봇 <b>Mako RPS</b> 출시.</p></div>
+      <div class="card" style="margin-bottom:14px"><h3>현대차그룹 × Boston Dynamics</h3><p>2026.09 미국 조지아 메타플랜트에 휴머노이드 <b>Atlas</b> 훈련센터(RMAC) 개소. 그룹 공장에 <b>2만 5천 대</b> 규모 배치 계획, 2028년 부품 시퀀싱 투입 예정.</p></div>
+      <div class="card"><h3>Siemens × NVIDIA</h3><p>2026.04 독일 에를랑겐 공장에서 휴머노이드가 자율 물류 작업 테스트. 젠슨 황(NVIDIA): “피지컬 AI가 다음 프런티어”.</p></div>
+    </div>
+  </div>
+  <div class="src">출처: <a href="https://www.stryker.com/content/dam/stryker/about/annual-review/2025/Stryker-2025-Comprehensive-Report.pdf" target="_blank">Stryker 2025 Comprehensive Report</a> · <a href="https://www.stryker.com/us/en/about/news/2026/stryker-expands-mako-robotics-portfolio.html" target="_blank">Stryker 보도자료 Mako RPS (2026.07.16)</a> · <a href="https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks" target="_blank">Boston Dynamics (2026.09.21)</a> · <a href="https://www.hyundaimotorgroup.com/en/story/hyundai-motor-group-bloomberg-atlas-boston-dynamics-rmac" target="_blank">현대차그룹 (2026.09.30)</a> · <a href="https://press.siemens.com/global/en/pressrelease/siemens-and-humanoid-bring-physical-ai-factory-floor-deploying-humanoids-industrial" target="_blank">Siemens (2026.04.16)</a> · <a href="https://www.youtube.com/watch?v=rF1EsryCAwc" target="_blank">NVIDIA GTC Berlin 2026</a></div>
+</section>
+
+<section>
+  <span class="kicker">The agenda of every company</span>
+  <h2>“이 모든 걸 <span class="hl">자동화</span>하라”가 기업들의 화두</h2>
+  <div class="grid3" style="margin-top:18px">
+    <div class="card"><div class="kpi">62<small>%</small></div><div class="kpi-l">AI 에이전트를 최소한 실험 중인 조직 (McKinsey 2025). 2026년 조사에서는 에이전틱 AI 사용이 늘었고 대기업이 주도</div></div>
+    <div class="card"><div class="kpi">46<small>%</small></div><div class="kpi-l">에이전트로 업무 흐름·프로세스를 완전 자동화하고 있다는 리더 (Microsoft, 31개국 3.1만 명 조사)</div></div>
+    <div class="card"><div class="kpi">13.8<small>%p</small></div><div class="kpi-l">국내 대기업(66.5%)과 중소기업(52.7%)의 생성형 AI 활용률 격차 (대한상의)</div></div>
+  </div>
+  <div class="grid2" style="margin-top:22px">
+    <div class="note"><b>격차는 벌어지는 중입니다.</b> McKinsey는 “대기업이 에이전트 확산을 훨씬 빠르게 진행하고 있다”고 분석했습니다. 작은 회사일수록 먼저 움직여야 합니다.</div>
+    <div class="note teal"><b>작은 회사의 장점:</b> 결재 단계가 짧고, 업무 흐름을 바꾸는 결정이 빠릅니다. 수멕스 규모라면 몇 달 안에 전사 흐름을 바꿀 수 있습니다.</div>
+  </div>
+  <div class="src">출처: <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025" target="_blank">McKinsey, The state of AI in 2025 (2025.11)</a> · <a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/the-state-of-ai-in-2026-on-the-road-to-roi.pdf" target="_blank">McKinsey, The state of AI in 2026 PDF</a> · <a href="https://blogs.microsoft.com/blog/2025/04/23/the-2025-annual-work-trend-index-the-frontier-firm-is-born/" target="_blank">Microsoft Work Trend Index 2025</a> · <a href="https://www.yna.co.kr/amp/view/AKR20260128023800003" target="_blank">연합뉴스, 대한상의 SGI</a></div>
+</section>
+
+<!-- ========== 05 ========== -->
+<section data-background-image="img/sumex.webp" data-background-size="cover" data-background-opacity="0.4">
+  <div class="divider" style="background:linear-gradient(90deg,rgba(6,16,30,.96),rgba(6,16,30,.5))">
+    <div class="num">05</div>
+    <h1>그래서,<br><span class="hl">수멕스는?</span></h1>
+    <p>병원 사용분 접수부터 마감까지, 반복 업무를 AI 에이전트에게 맡기고 영업은 현장과 관계에 집중합니다.</p>
+  </div>
+</section>
+
+<section class="roomy">
+  <span class="kicker">AS-IS · 지금 우리의 업무 흐름</span>
+  <h2>하루에도 몇 번씩 반복되는 <span class="am">6단계</span></h2>
+  <div class="flow">
+    <div class="st"><span class="n">STEP 1</span><h4>사용분 접수</h4><p>간호사가 카톡·문자·전화·사진으로 환자·날짜·수량 전달</p></div><div class="ar">→</div>
+    <div class="st"><span class="n">STEP 2</span><h4>거래명세서</h4><p>병원마다 다른 양식으로 직접 작성</p></div><div class="ar">→</div>
+    <div class="st"><span class="n">STEP 3</span><h4>이카운트 주문서</h4><p>가납 선납 / 판매 구분, 품목·적요 입력</p></div><div class="ar">→</div>
+    <div class="st"><span class="n">STEP 4</span><h4>간납사 사이트</h4><p>스마트엠·이지메디컴 등 주문·공지 확인, 납품 등록</p></div><div class="ar">→</div>
+    <div class="st"><span class="n">STEP 5</span><h4>출고</h4><p>주문서 기준 창고 출고, 배송·AS</p></div><div class="ar">→</div>
+    <div class="st"><span class="n">STEP 6</span><h4>월 마감</h4><p>병원별 마감일·서류·메일·팩스</p></div>
+  </div>
+  <div class="grid3" style="margin-top:26px">
+    <div class="card"><h3 class="am">반복</h3><p>같은 정보를 카톡 → 명세서 → 이카운트 → 사이트에 여러 번 옮겨 적기</p></div>
+    <div class="card"><h3 class="am">규칙이 많음</h3><p>병원별 양식, 단가, 마감일, 간납사 경로가 모두 다름. 담당자 머릿속에만 있는 노하우</p></div>
+    <div class="card"><h3 class="am">놓치기 쉬움</h3><p>사이트 신규 주문·공지 확인 누락, 중복 입력, 마감 지연</p></div>
+  </div>
+  <div class="note teal" style="margin-top:18px">이 흐름은 <b>규칙이 분명하고 반복적</b>이라 에이전트가 가장 잘하는 종류의 일입니다. 동시에 병원과의 관계·판단은 사람이 해야 합니다.</div>
+</section>
+
+<section class="roomy">
+  <span class="kicker">Pilot · 이미 해본 것</span>
+  <h2>최은성 파일럿: <span class="hl">AI 에이전트로 실제 처리한 업무</span></h2>
+  <div class="grid3" style="margin-top:14px">
+    <div class="card"><h3>이카운트 주문서 자동 입력</h3><p>사용분을 읽고 품목 합산, 적요(사용일·환자 수량), 납기일 규칙까지 반영해 주문서 작성</p></div>
+    <div class="card"><h3>간납사 사이트 처리</h3><p>스마트엠 납품등록(비고에 사용일 기재), 이지메디컴 등 주문 조회</p></div>
+    <div class="card"><h3>거래명세서·마감서류</h3><p>병원별 양식으로 명세서·월 마감 서류를 만들고 PDF로 저장</p></div>
+    <div class="card"><h3>메일 모니터링</h3><p>네이버웍스 메일을 읽고 요약, 처리할 일만 보고</p></div>
+    <div class="card"><h3>법인카드 경비 정산</h3><p>월별 카드 사용 내역 정산 입력 보조</p></div>
+    <div class="card"><h3>제품 교육 웹사이트</h3><p>Stryker 제품 가이드를 웹페이지로 제작·배포 (이 발표 자료도 같은 방식)</p></div>
+  </div>
+  <div class="note" style="margin-top:18px">원칙: AI가 <b>초안과 입력</b>을 하고, 발송·제출·확정은 <b>사람이 확인 후 승인</b>합니다. 모바일(텔레그램)로 지시하고 결과를 받는 것까지 시험 완료.</div>
+  <div class="src">예시 결과물: <a href="https://cesceo.github.io/stryker-anchor-guide/" target="_blank">cesceo.github.io/stryker-anchor-guide</a> · 사용 도구: Aside(AI 브라우저 에이전트), Claude</div>
+</section>
+
+<section>
+  <span class="kicker">TO-BE · 목표 구조</span>
+  <h2>사진 한 장 보내면, <span class="hl">명세서·주문서가 동시에</span></h2>
+  <div class="g-55-45" style="grid-template-columns:1.35fr 1fr;margin-top:4px">
+    <div style="position:relative">
+      <div class="flow" style="margin-top:8px">
+        <div class="st" style="flex:.9"><span class="n">INPUT</span><h4>직원 1인 1봇</h4><p>텔레그램으로 사용분 사진·메모 전송, 질문</p></div><div class="ar">→</div>
+        <div class="st" style="flex:1.1;border-color:var(--teal);box-shadow:0 0 40px rgba(46,230,214,.15)"><span class="n">AI AGENT</span><h4>상시 가동 AI</h4><p>하네스: 병원 마스터 · 품목 매핑 · 병원별 단가 · 가납 현황 · 마감 규칙</p></div><div class="ar">→</div>
+        <div class="st" style="flex:.9"><span class="n">HUMAN</span><h4>원탭 승인</h4><p>담당자가 확인 후 OK. 외부 발송은 항상 사람이</p></div>
+      </div>
+      <div class="grid2" style="margin-top:16px;gap:12px">
+        <div class="card"><h3 class="hl">거래명세서 초안</h3><p>병원 양식으로 작성해 담당 영업 개인 채팅으로 전달</p></div>
+        <div class="card"><h3 class="hl">이카운트 주문서</h3><p>동시에 작성 → 물류 담당이 주문서 보고 출고</p></div>
+        <div class="card"><h3 class="hl">간납사 모니터링</h3><p>사이트 신규 주문·공지·사용분을 담당자에게 알림</p></div>
+        <div class="card"><h3 class="hl">지식 비서</h3><p>공용드라이브(Stryker·수멕스 자료) 기반 문서 초안·제품 Q&amp;A</p></div>
+      </div>
+    </div>
+    <img class="img-r" src="img/sumex.webp" alt="수멕스 AI 에이전트 구조" style="margin-top:8px">
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Roadmap · 제안</span>
+  <h2>작게 시작해서, <span class="hl">검증하고, 넓힌다</span></h2>
+  <div class="chart-box" style="height:250px;padding:0;background:none;border:0">
+    <div class="flow" style="margin-top:0;height:100%">
+      <div class="st"><span class="n">PHASE 0</span><h4>준비</h4><p>회사 전용 AI 계정, AI 전용 로그인 ID, 마스터 시트 4종 정비</p></div>
+      <div class="st" style="border-color:var(--teal)"><span class="n">PHASE 1</span><h4>파일럿</h4><p>최은성 담당 병원: 사용분 → 명세서·주문서 자동화</p></div>
+      <div class="st"><span class="n">PHASE 2</span><h4>영업 확대</h4><p>영업 전원 1인 1봇, 담당 병원별 규칙 등록</p></div>
+      <div class="st"><span class="n">PHASE 3</span><h4>간납사 모니터링</h4><p>사이트 상시 로그인, 신규 주문·공지 알림</p></div>
+      <div class="st"><span class="n">PHASE 4</span><h4>지식 학습</h4><p>공용드라이브 문서로 제품·의료 지식 Q&amp;A, 문서 초안</p></div>
+      <div class="st" style="border-color:var(--amber)"><span class="n" style="color:var(--amber)">PHASE 5</span><h4>전사 운영</h4><p>처리시간·오류율 측정, 규칙 개선 반복</p></div>
+    </div>
+  </div>
+  <div class="grid2" style="margin-top:8px">
+    <div class="card"><h3>측정할 지표</h3><ul style="font-size:24px"><li>사용분 접수 → 주문서 완료까지 걸리는 시간</li><li>입력 오류·중복 건수, 마감 지연 건수</li><li>영업 담당자의 병원 방문·수술 지원 시간</li></ul></div>
+    <div class="card"><h3>성공 조건 (한국은행·McKinsey의 교훈)</h3><ul style="font-size:24px"><li>도구 도입이 아니라 <b>업무 흐름 재설계</b></li><li>아낀 시간을 <b>영업·현장에 재배치</b></li><li>규칙과 노하우를 <b>문서(하네스)로 축적</b></li></ul></div>
+  </div>
+</section>
+
+<section class="roomy">
+  <span class="kicker">Guardrails · 안전 원칙</span>
+  <h2>AI에게 맡기되, <span class="hl">통제는 사람이</span></h2>
+  <div class="grid3" style="margin-top:16px">
+    <div class="card"><h3>① 사람 승인</h3><p>메일·팩스 발송, 입찰·견적 제출, 마감 확정, 삭제는 반드시 담당자 승인 후 실행</p></div>
+    <div class="card"><h3>② 개인정보 보호</h3><p>환자 이름은 마스킹, 사용분 사진은 보관 기간을 정해 삭제</p></div>
+    <div class="card"><h3>③ 계정 분리</h3><p>AI 전용 ID 사용 (같은 ID 동시 로그인 시 기존 세션이 끊기는 문제 방지)</p></div>
+    <div class="card"><h3>④ 중복·검증</h3><p>입력 전 기존 주문서·적요 검색, 금액·수량 자동 대조</p></div>
+    <div class="card"><h3>⑤ 기록</h3><p>AI가 한 모든 작업을 로그로 남겨 추적 가능하게</p></div>
+    <div class="card"><h3>⑥ 프런티어 인식</h3><p>AI가 약한 일(복잡한 판단·협상)은 사람이. BCG 실험의 −19%p를 기억</p></div>
+  </div>
+</section>
+
+<section class="roomy roles">
+  <span class="kicker">Our roles · 역할의 변화</span>
+  <h2>각자의 일은 이렇게 <span class="hl">더 가치 있어진다</span></h2>
+  <table class="cmp">
+    <tr><th>역할</th><th>AI에게 넘기는 일</th><th class="hl">사람이 집중할 일</th></tr>
+    <tr><td>대표 · 이사</td><td>실적 집계, 보고서 초안, 자료 조사</td><td>전략, 핵심 거래처 관계, 의사결정</td></tr>
+    <tr><td>영업</td><td>명세서·주문서 작성, 사이트 확인, 마감 서류</td><td>병원·의료진 관계, 수술 현장 지원, 신규 제안</td></tr>
+    <tr><td>배송 · 데모 · AS</td><td>일정·출고 정보 정리, 이력 조회</td><td>현장 설치·수리, 고객 응대 품질</td></tr>
+    <tr><td>관리팀</td><td>정산 대조, 증빙 정리, 반복 입력</td><td>예외 처리, 최종 검증, 리스크 관리</td></tr>
+    <tr><td>물류 · 재고</td><td>입출고 기록, 가납 현황 집계</td><td>정확한 출고, 재고 판단, 긴급 대응</td></tr>
+  </table>
+  <div class="note teal" style="margin-top:18px">AI는 <b>사람을 줄이기 위한 것</b>이 아니라, 같은 인원이 <b>더 많은 병원을 더 깊게</b> 관리하기 위한 것입니다.</div>
+</section>
+
+<section class="start">
+  <span class="kicker">Start today</span>
+  <h2>오늘부터 할 수 있는 <span class="hl">3가지</span></h2>
+  <div class="grid3" style="margin-top:24px">
+    <div class="card" style="min-height:440px"><div class="kpi hl" style="color:var(--teal)">1</div><h3 style="margin-top:14px">매일 1개, AI에게 맡기기</h3><p>메일 답장 초안, 견적 비교표, 제품 설명 요약. 작게라도 매일 써야 Lv.1 → Lv.2로 올라갑니다.</p></div>
+    <div class="card" style="min-height:440px"><div class="kpi" style="color:var(--teal)">2</div><h3 style="margin-top:14px">내 반복업무 Top 5 적기</h3><p>매주·매월 같은 방식으로 하는 일을 적어 주세요. 그 목록이 수멕스 자동화의 설계도가 됩니다.</p></div>
+    <div class="card" style="min-height:440px"><div class="kpi" style="color:var(--teal)">3</div><h3 style="margin-top:14px">결과는 검증하고, 피드백은 쌓기</h3><p>틀린 부분을 고쳐 주고 규칙으로 남기면 AI는 점점 ‘우리 회사 사람’이 됩니다.</p></div>
+  </div>
+</section>
+
+<section data-background-image="img/future.webp" data-background-size="cover" data-background-opacity="0.55">
+  <div class="divider" style="background:linear-gradient(90deg,rgba(6,16,30,.95) 0%,rgba(6,16,30,.6) 60%,rgba(6,16,30,.1) 100%)">
+    <span class="kicker">Conclusion</span>
+    <h1 style="font-size:78px">우리 인간은<br><span class="hl">더 가치 있는 일</span>에<br>매진한다.</h1>
+    <p style="margin-top:26px">AI vs 인간이 아니라 AI vs <b class="hl">AI + 인간</b>. 수멕스는 AI와 함께 일하는 팀이 되겠습니다.</p>
+    <p class="mut" style="font-size:22px;margin-top:30px">감사합니다 · 최은성</p>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">Watch more · 추천 강의 (YouTube)</span>
+  <h2>더 깊이 공부하고 싶다면</h2>
+  <div class="yt" style="margin-top:12px">
+    <a href="https://www.youtube.com/watch?v=LPZh9BOjkQs" target="_blank"><img src="https://img.youtube.com/vi/LPZh9BOjkQs/hqdefault.jpg" alt=""><div><b>Large Language Models explained briefly</b><span>3Blue1Brown · 입문, LLM 원리 8분</span></div></a>
+    <a href="https://www.youtube.com/watch?v=7xTGNNLPyMI" target="_blank"><img src="https://img.youtube.com/vi/7xTGNNLPyMI/hqdefault.jpg" alt=""><div><b>Deep Dive into LLMs like ChatGPT</b><span>Andrej Karpathy (OpenAI 공동창업) · 2025.02</span></div></a>
+    <a href="https://www.youtube.com/watch?v=LCEmiRjPEtQ" target="_blank"><img src="https://img.youtube.com/vi/LCEmiRjPEtQ/hqdefault.jpg" alt=""><div><b>Software Is Changing (Again)</b><span>Andrej Karpathy · Y Combinator 2025.06</span></div></a>
+    <a href="https://www.youtube.com/watch?v=96jN2OCOfLs" target="_blank"><img src="https://img.youtube.com/vi/96jN2OCOfLs/hqdefault.jpg" alt=""><div><b>From Vibe Coding to Agentic Engineering</b><span>Karpathy × Sequoia AI Ascent 2026.04</span></div></a>
+    <a href="https://www.youtube.com/watch?v=q1XFm21I-VQ" target="_blank"><img src="https://img.youtube.com/vi/q1XFm21I-VQ/hqdefault.jpg" alt=""><div><b>AI Agentic Workflows</b><span>Andrew Ng · Snowflake Summit 2024</span></div></a>
+    <a href="https://www.youtube.com/watch?v=D7_ipDqhtwk" target="_blank"><img src="https://img.youtube.com/vi/D7_ipDqhtwk/hqdefault.jpg" alt=""><div><b>How We Build Effective Agents</b><span>Barry Zhang, Anthropic · AI Engineer 2025</span></div></a>
+    <a href="https://www.youtube.com/watch?v=CEvIs9y1uog" target="_blank"><img src="https://img.youtube.com/vi/CEvIs9y1uog/hqdefault.jpg" alt=""><div><b>Don’t Build Agents, Build Skills Instead</b><span>Anthropic · AI Engineer 2025.12</span></div></a>
+    <a href="https://www.youtube.com/watch?v=0NBILspM4c4" target="_blank"><img src="https://img.youtube.com/vi/0NBILspM4c4/hqdefault.jpg" alt=""><div><b>NVIDIA Live at CES 2026</b><span>Jensen Huang · 에이전트와 피지컬 AI</span></div></a>
+  </div>
+</section>
+
+<section>
+  <span class="kicker">References</span>
+  <h2 style="font-size:40px">참고 자료 (클릭하면 원문으로 이동)</h2>
+  <div class="refs">
+    <h4>글로벌 보고서</h4>
+    <ul>
+      <li><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">Stanford HAI, The 2026 AI Index Report</a> · <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report/economy" target="_blank">Economy 장</a></li>
+      <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank">McKinsey, The state of AI in 2026: On the road to ROI (2026.08)</a></li>
+      <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025" target="_blank">McKinsey, The state of AI in 2025: Agents, innovation, and transformation</a></li>
+      <li><a href="https://www.mckinsey.com/capabilities/people-and-organization/our-insights/ai-is-changing-work-now-it-has-to-change-the-organization" target="_blank">McKinsey Quarterly, AI is changing work. Now it has to change the organization (2026.10)</a></li>
+      <li><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025" target="_blank">World Economic Forum, Future of Jobs Report 2025</a></li>
+      <li><a href="https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born" target="_blank">Microsoft, 2025 Work Trend Index: The Frontier Firm is born</a></li>
+      <li><a href="https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025" target="_blank">Gartner, 40% of enterprise apps will feature task-specific AI agents by 2026</a></li>
+      <li><a href="https://metr.org/time-horizons" target="_blank">METR, Task-Completion Time Horizons of Frontier AI Models</a> · <a href="https://metr.org/blog/2026-01-29-time-horizon-1-1/" target="_blank">Time Horizon 1.1</a></li>
+    </ul>
+    <h4>연구 논문</h4>
+    <ul>
+      <li><a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=64700" target="_blank">Dell’Acqua 외, Navigating the Jagged Technological Frontier (HBS/BCG)</a></li>
+      <li><a href="https://www.nber.org/papers/w33641" target="_blank">Dell’Acqua 외, The Cybernetic Teammate (NBER w33641, P&amp;G)</a></li>
+      <li><a href="https://www.nber.org/papers/w31161" target="_blank">Brynjolfsson·Li·Raymond, Generative AI at Work (NBER w31161)</a></li>
+      <li><a href="https://hbr.org/2023/08/ai-wont-replace-humans-but-humans-with-ai-will-replace-humans-without-ai" target="_blank">HBR, AI Won’t Replace Humans — But Humans With AI Will Replace Humans Without AI</a></li>
+      <li><a href="https://arxiv.org/abs/1706.03762" target="_blank">Vaswani 외, Attention Is All You Need (2017)</a></li>
+    </ul>
+    <h4>국내 자료</h4>
+    <ul>
+      <li><a href="https://www.bok.or.kr/portal/bbs/P0002353/view.do?depth=200433&menuNo=200433&nttId=10098322&programType=newsData&relate=Y" target="_blank">한국은행 BOK 이슈노트 제2026-12호, AI 도입은 생산성을 높이는가?</a></li>
+      <li><a href="https://www.bok.or.kr/portal/bbs/B0000347/view.do?menuNo=201106&nttId=10098529" target="_blank">한국은행 블로그, AI 도입은 생산성을 높이는가? (2026.06)</a></li>
+      <li><a href="https://eiec.kdi.re.kr/policy/domesticView.do?ac=0000202572" target="_blank">대한상공회의소 SGI, 생성형 AI와 기업의 생산성 (KDI 요약)</a> · <a href="https://www.yna.co.kr/amp/view/AKR20260128023800003" target="_blank">연합뉴스 보도</a></li>
+      <li><a href="http://www.samsungsds.com/kr/insights/korean-workers-gen-ai-survey-2026.html" target="_blank">삼성SDS, 단순 업무는 Gen AI에게, 핵심 업무는 나에게 (2026.01)</a></li>
+      <li><a href="https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01416966645582744" target="_blank">이데일리, LG전자 AX로 일하는 방식 재정의 (2026.09)</a> · <a href="https://www.hankyung.com/article/202607291934g" target="_blank">한국경제 (2026.07)</a></li>
+      <li><a href="https://www.poscodx.com/kor/pr/newsRoomView.do?col&num=7101&page&sw" target="_blank">포스코DX 뉴스룸 (2026.03)</a> · <a href="https://www.etoday.co.kr/news/view/2608737" target="_blank">이투데이 (2026.07)</a></li>
+      <li><a href="https://news.sktelecom.com/232606" target="_blank">SK텔레콤 뉴스룸, AX 혁신 2.0 (2026.11)</a></li>
+    </ul>
+    <h4>기술 · 모델 · 피지컬 AI</h4>
+    <ul>
+      <li><a href="https://www.anthropic.com/research/building-effective-agents" target="_blank">Anthropic, Building effective agents</a> · <a href="https://openai.com/index/harness-engineering/" target="_blank">OpenAI, Harness engineering</a> · <a href="https://www.langchain.com/blog/the-anatomy-of-an-agent-harness" target="_blank">LangChain, Anatomy of an Agent Harness</a></li>
+      <li><a href="https://www.anthropic.com/claude-opus-5-5" target="_blank">Anthropic, Claude Opus 5.5</a> · <a href="https://openai.com/index/gpt-6-astra" target="_blank">OpenAI, GPT-6 Astra</a> · <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon" target="_blank">Google, Gemini 4 Argon</a></li>
+      <li><a href="https://techcrunch.com/2026/02/27/chatgpt-reaches-900m-weekly-active-users/" target="_blank">TechCrunch, ChatGPT reaches 900M weekly active users</a> · <a href="https://www.euronews.com/2023/02/02/openai-chatgpt" target="_blank">Reuters/UBS, fastest-growing app</a></li>
+      <li><a href="https://www.stryker.com/content/dam/stryker/about/annual-review/2025/Stryker-2025-Comprehensive-Report.pdf" target="_blank">Stryker 2025 Comprehensive Report</a> · <a href="https://www.stryker.com/us/en/about/news/2026/stryker-expands-mako-robotics-portfolio.html" target="_blank">Mako RPS 보도자료</a></li>
+      <li><a href="https://bostondynamics.com/news/boston-dynamics-opens-robotics-metaplant-application-center-to-train-humanoid-robots-for-manufacturing-tasks" target="_blank">Boston Dynamics, RMAC 개소</a> · <a href="https://press.siemens.com/global/en/pressrelease/siemens-and-humanoid-bring-physical-ai-factory-floor-deploying-humanoids-industrial" target="_blank">Siemens × Humanoid × NVIDIA</a></li>
+    </ul>
+    <p style="font-size:13px;color:#6f819a;margin-top:8px">제작: 최은성 (AI 에이전트 Aside·Claude 활용). 오픈소스: reveal.js, Chart.js, Pretendard. 이미지: AI 생성. 수치는 각 출처의 발표 시점 기준이며, 2026.11.05 확인.</p>
+  </div>
+</section>
+
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const T='#2ee6d6',B='#4f8cff',A='#ffb547',R='#ff6b8b',G='#94a3b8',W='#e6edf6';
+Chart.defaults.color='#b8c6d8';
+Chart.defaults.font.family="'Pretendard Variable',Pretendard,sans-serif";
+Chart.defaults.font.size=18;
+Chart.defaults.borderColor='rgba(148,197,255,.12)';
+Chart.defaults.plugins.legend.labels.boxWidth=14;
+const valLabel={id:'valLabel',afterDatasetsDraw(c,a,o){if(!o||!o.on)return;const{ctx}=c;ctx.save();ctx.font="700 20px 'Pretendard Variable',sans-serif";ctx.fillStyle='#fff';
+ c.data.datasets.forEach((ds,i)=>{const m=c.getDatasetMeta(i);if(m.hidden)return;m.data.forEach((el,j)=>{const v=ds.data[j];if(v==null)return;const txt=(o.fmt?o.fmt(v,j,i):v);
+  if(c.options.indexAxis==='y'){ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillText(txt,el.x+8,el.y);}else{ctx.textAlign='center';ctx.textBaseline='bottom';ctx.fillText(txt,el.x,el.y-6);}});});ctx.restore();}};
+Chart.register(valLabel);
+const grad=(ctx,c1,c2)=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,ctx.chart.height);g.addColorStop(0,c1);g.addColorStop(1,c2);return g;};
+const charts={
+ c_bcg:()=>({type:'bar',data:{labels:['처리 과제 수','처리 속도','결과물 품질'],datasets:[{data:[12.2,25.1,40],backgroundColor:[B,T,A],borderRadius:10,barPercentage:.6}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'AI 사용 그룹의 향상폭 (AI 미사용 대비, %)',color:W,font:{size:20}},valLabel:{on:true,fmt:v=>'+'+v+'%'}},scales:{y:{beginAtZero:true,max:50,ticks:{stepSize:10,callback:v=>v+'%'}},x:{grid:{display:false}}}}}),
+ c_pg:()=>({type:'bar',data:{labels:['혼자 (AI 없음)','2인 팀 (AI 없음)','혼자 + AI','2인 팀 + AI'],datasets:[{data:[0,0.24,0.37,0.39],backgroundColor:[G,B,T,A],borderRadius:10,barPercentage:.6}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'성과 향상 (기준 대비 표준편차)',color:W,font:{size:20}},valLabel:{on:true,fmt:v=>v===0?'기준':'+'+v.toFixed(2)}},scales:{y:{beginAtZero:true,max:.5,ticks:{stepSize:.1}},x:{grid:{display:false}}}}}),
+ c_prod:()=>({type:'bar',data:{labels:['고객지원 (평균)','고객지원 (신입·저숙련)','소프트웨어 개발','마케팅 산출물'],datasets:[{data:[14,34,26,50],backgroundColor:[B,T,B,A],borderRadius:10}]},
+  options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'연구로 확인된 생산성 향상 (%)',color:W,font:{size:20}},valLabel:{on:true,fmt:v=>'+'+v+'%'}},scales:{x:{beginAtZero:true,max:62,ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}}}}),
+ c_wau:()=>({type:'line',data:{labels:['23.11','24.08','24.12','25.02','25.03','25.08','25.10','26.02'],datasets:[{label:'ChatGPT 주간 사용자(백만 명)',data:[100,200,300,400,500,700,800,900],borderColor:T,backgroundColor:c=>grad(c,'rgba(46,230,214,.45)','rgba(46,230,214,0)'),fill:true,tension:.35,pointRadius:6,pointBackgroundColor:T,borderWidth:4}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'ChatGPT 주간 활성 사용자 (백만 명, OpenAI 발표)',color:W,font:{size:20}},valLabel:{on:true}},scales:{y:{beginAtZero:true,max:1000,ticks:{stepSize:200}},x:{grid:{display:false}}}}}),
+ c_kr_use:()=>({type:'bar',data:{labels:['한국은행 (전체 취업자)','대한상의 (전체)','대기업 300인+','중소기업 300인 미만'],datasets:[{data:[51.8,56,66.5,52.7],backgroundColor:[B,T,T,A],borderRadius:10,barPercentage:.6}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'업무에 생성형 AI를 쓰는 근로자 비율 (%)',color:W,font:{size:20}},valLabel:{on:true,fmt:v=>v+'%'}},scales:{y:{beginAtZero:true,max:80,ticks:{stepSize:20}},x:{grid:{display:false},ticks:{font:{size:16}}}}}}),
+ c_kr_time:()=>({type:'bar',data:{labels:['한국은행 (실측 추정)','삼성SDS (일 기준)','대한상의 (주 기준)'],datasets:[{data:[3.8,14.5,17.6],backgroundColor:[B,T,A],borderRadius:10,barPercentage:.55}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'AI 활용으로 줄어든 업무시간 (%)',color:W,font:{size:20}},valLabel:{on:true,fmt:(v,j)=>v+'%'+(j==0?' (주 1.5h)':j==2?' (주 8.4h)':'')}},scales:{y:{beginAtZero:true,max:22,ticks:{stepSize:5}},x:{grid:{display:false},ticks:{font:{size:15}}}}}}),
+ c_cases:()=>({type:'bar',data:{labels:['LG전자 포장 설계','LG전자 물류 데이터 분석','포스코DX 결산 리스크 점검'],datasets:[{label:'도입 전 (분)',data:[7200,180,180],backgroundColor:G,borderRadius:8},{label:'도입 후 (분)',data:[90,1,1],backgroundColor:T,borderRadius:8}]},
+  options:{indexAxis:'y',maintainAspectRatio:false,plugins:{title:{display:true,text:'업무 처리 시간 Before → After (로그 눈금)',color:W,font:{size:20}},legend:{position:'bottom'},valLabel:{on:true,fmt:v=>v>=60?(v/60)+'시간':v+'분'}},scales:{x:{type:'logarithmic',min:.5,max:40000,ticks:{maxRotation:0,autoSkip:false,callback:v=>({1:'1분',10:'10분',100:'100분',1000:'1천분',10000:'1만분'})[v]||''}},y:{grid:{display:false},ticks:{font:{size:16}}}}}}),
+ c_mck:()=>({type:'bar',data:{labels:['AI로 개인 생산성 향상','회사 이익(EBIT)에 영향','AI 고성과 기업'],datasets:[{data:[80,37,6],backgroundColor:[T,B,A],borderRadius:10,barPercentage:.6}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'McKinsey 글로벌 조사 2026 (응답자 비율 %)',color:W,font:{size:20}},valLabel:{on:true,fmt:v=>v+'%'}},scales:{y:{beginAtZero:true,max:100,ticks:{stepSize:20}},x:{grid:{display:false}}}}}),
+ c_wef:()=>({type:'bar',data:{labels:['새로 생기는 일자리','대체되는 일자리','순증'],datasets:[{data:[170,-92,78],backgroundColor:[T,R,A],borderRadius:10,barPercentage:.55}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'2025~2030 전 세계 일자리 변화 (백만 개)',color:W,font:{size:20}},valLabel:{on:true,fmt:v=>(v>0?'+':'')+v+'M'}},scales:{y:{min:-120,max:200,ticks:{stepSize:40}},x:{grid:{display:false}}}}}),
+ c_gartner:()=>({type:'bar',data:{labels:['2025','2026년 말 (전망)'],datasets:[{data:[5,40],backgroundColor:[G,T],borderRadius:10,barPercentage:.5}]},
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'과제 특화 AI 에이전트를 탑재한 기업용 앱 비율 (Gartner)',color:W,font:{size:18}},valLabel:{on:true,fmt:(v,j)=>j==0?'5% 미만':v+'%'}},scales:{y:{beginAtZero:true,max:50,ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}}),
+ c_metr:()=>{const pts=[['GPT-2','2019-02-14',0.05],['GPT-3','2020-05-28',0.14],['GPT-3.5','2022-03-15',0.6],['GPT-4','2023-03-14',3.99],['GPT-4o','2024-05-13',6.99],['Claude 3.5 Sonnet','2024-10-22',20.52],['o1','2024-12-05',38.83],['Claude 3.7 Sonnet','2025-02-24',60.39],['o3','2025-04-16',119.73],['GPT-5','2025-08-07',203.01],['Claude Opus 4.5','2025-11-24',292.99],['GPT-5.2','2025-12-11',352.25],['Claude Opus 4.6','2026-02-05',718.81]];
+  const yr=d=>{const t=new Date(d);return t.getFullYear()+(t-new Date(t.getFullYear(),0,1))/31536e6;};
+  const fmt=m=>m<1?Math.round(m*60)+'초':m<60?Math.round(m)+'분':(m/60).toFixed(m<600?1:0)+'시간';
+  const lbl={id:'lbl',afterDatasetsDraw(c){const{ctx}=c;ctx.save();ctx.font="700 17px 'Pretendard Variable',sans-serif";ctx.fillStyle='#dbe7f5';const m=c.getDatasetMeta(0);m.data.forEach((el,i)=>{const p=pts[i];const show=['GPT-2','GPT-3.5','GPT-4','Claude 3.5 Sonnet','GPT-5','Claude Opus 4.6'].includes(p[0]);if(!show)return;const right=i>=5;ctx.textAlign=right?'right':'left';ctx.fillText(p[0]+' · '+fmt(p[2]),el.x+(right?-14:12),el.y+(right?4:-12));});ctx.restore();}};
+  return {type:'scatter',data:{datasets:[{data:pts.map(p=>({x:yr(p[1]),y:p[2]})),showLine:true,borderColor:T,backgroundColor:A,pointRadius:7,borderWidth:3,tension:.2}]},plugins:[lbl],
+  options:{maintainAspectRatio:false,plugins:{legend:{display:false},title:{display:true,text:'AI가 50% 확률로 완수하는 과제 길이 (사람 전문가 소요시간 기준)',color:W,font:{size:19}},tooltip:{callbacks:{label:c=>pts[c.dataIndex][0]+': '+fmt(pts[c.dataIndex][2])}}},
+   scales:{x:{type:'linear',min:2019,max:2026.6,ticks:{stepSize:1,callback:v=>Number.isInteger(v)?v:''},grid:{color:'rgba(148,197,255,.08)'}},y:{type:'logarithmic',min:0.03,max:2000,ticks:{callback:v=>({0.1:'6초',1:'1분',10:'10분',60:'1시간',100:'',1000:'16시간'})[v]??''}}}}};}
+};
+const made={};
+function initCharts(slide){slide.querySelectorAll('canvas[id]').forEach(cv=>{if(made[cv.id]||!charts[cv.id])return;made[cv.id]=new Chart(cv,charts[cv.id]());});}
+Reveal.initialize({width:1600,height:900,margin:0.02,center:false,hash:true,slideNumber:'c/t',transition:'slide',backgroundTransition:'fade',controls:true,progress:true});
+Reveal.on('ready',e=>initCharts(e.currentSlide));
+Reveal.on('slidechanged',e=>initCharts(e.currentSlide));
+</script>
+</body>
+</html>
